@@ -1,8 +1,8 @@
 import React from 'react';
 
-import './Home.scss';
+import './Homepage.scss';
 
-export const Home = () => {
+export const HomePage = () => {
     return (
         <div className="homepage">
             <h1>Welcome to homepage</h1>
