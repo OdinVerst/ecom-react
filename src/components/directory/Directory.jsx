@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-import { MenuItem } from '../menu-item/MenuItem';
+import MenuItem from '../menu-item/MenuItem';
 
 import './Directory.scss';
 
@@ -14,33 +14,38 @@ export default class Directory extends Component {
                     title: 'hats',
                     imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
                     id: 1,
-                    linkUrl: 'shop/hats'
+                    linkUrl: 'shop/hats',
+                    addressUrl: 'hats' 
                 },
                 {
                     title: 'jackets',
                     imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
                     id: 2,
-                    linkUrl: 'shop/jackets'
+                    linkUrl: 'shop/jackets',
+                    addressUrl: ''
                 },
                 {
                     title: 'sneakers',
                     imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
                     id: 3,
-                    linkUrl: 'shop/sneakers'
+                    linkUrl: 'shop/sneakers',
+                    addressUrl: ''
                 },
                 {
                     title: 'womens',
                     imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
                     size: 'large',
                     id: 4,
-                    linkUrl: 'shop/womens'
+                    linkUrl: 'shop/womens',
+                    addressUrl: ''
                 },
                 {
                     title: 'mens',
                     imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
                     size: 'large',
                     id: 5,
-                    linkUrl: 'shop/mens'
+                    linkUrl: 'shop/mens',
+                    addressUrl: ''
                 }
             ]
         }
@@ -48,8 +53,8 @@ export default class Directory extends Component {
     render() {
         return (
             <div className="directory-menu">
-                {this.state.sections.map(({ id, title, imageUrl, size}) => 
-                    <MenuItem key={id} title={title} size={size} imageUrl={imageUrl} />
+                {this.state.sections.map(({ id, ...otherProps}) => 
+                    <MenuItem key={id} {...otherProps} />
                 )}
             </div>
         )
