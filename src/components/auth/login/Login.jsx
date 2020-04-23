@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import FormInput from '../../form-input/FormInput';
 
 import './Login.scss';
+import ButtonCustom from '../../button-custom/ButtonCustom';
 
 class Login extends Component {
     constructor(props) {
@@ -36,9 +37,9 @@ class Login extends Component {
                 <h2>I already have an account</h2>
                 <span>Sign in with your email and password</span>
                 <form onSubmit={this.submitHandler}>
-                    <FormInput label='Email' changeHandler={this.inputChangeHandler} type="email" name="email" value={email} />
-                    <FormInput label='Password' changeHandler={this.inputChangeHandler} type="password" name="password" value={password} />
-                    <button type="submit">Log In</button>
+                    <FormInput label='Email' changeHandler={this.inputChangeHandler} type="email" name="email" value={email} required />
+                    <FormInput label='Password' changeHandler={this.inputChangeHandler} type="password" name="password" value={password} required />
+                    <ButtonCustom type="submit">Log In</ButtonCustom>
                 </form>
             </div>
         )
