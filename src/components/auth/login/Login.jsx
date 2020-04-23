@@ -33,8 +33,14 @@ class Login extends Component {
                 <h2>I already have an account</h2>
                 <span>Sign in with your email and password</span>
                 <form onSubmit={this.submitHandler}>
-                    <input onChange={this.inputChangeHandler} type="email" name="email" value={email}/>
-                    <input onChange={this.inputChangeHandler} type="password" name="password" value={password}/>
+                    <label>
+                        <span>Email</span>
+                        <input onChange={this.inputChangeHandler} type="email" name="email" value={email}/>
+                    </label>
+                    <label>
+                        <span>Password</span>
+                        <input onChange={this.inputChangeHandler} type="password" name="password" value={password}/>
+                    </label>
                     <button type="submit">Log In</button>
                 </form>
             </div>
