@@ -8,6 +8,7 @@ import Header from './components/header/Header';
 import Singin from './pages/singin/Singin';
 
 import './index.css';
+import config from './config';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -22,3 +23,5 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+
+console.log(config.firebase);
