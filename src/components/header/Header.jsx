@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import './Header.scss';
 import { ReactComponent as Logo } from './logo.svg';
 
-const Header = () => {
+const Header = ({login}) => {
     return (
         <div className="header">
             <div className="logo-container">
@@ -13,6 +13,7 @@ const Header = () => {
                 </Link>
             </div>
             <div className="options">
+                {login ? <span className="option">{login}</span> : null}
                 <Link className="option" to="/shop">Shop</Link>
                 <Link className="option" to="/shop">Contacts</Link>
             </div>
