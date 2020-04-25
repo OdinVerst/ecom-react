@@ -12,7 +12,7 @@ class App extends Component {
         super();
 
         this.state = {
-            userEmail: null
+            user: null
         }
     }
 
@@ -20,7 +20,7 @@ class App extends Component {
 
     componentDidMount() {
         this.unsubscribeFromAuth = auth.onAuthStateChanged(user => {
-            this.setState({userEmail: user.email});
+            this.setState({ user: user });
         })
     }
 
@@ -31,7 +31,7 @@ class App extends Component {
     render() {
         return (
         <Router>
-            <Header login={this.state.userEmail} />
+            <Header login={this.state.user} />
             <Switch>
                 <Route exact path='/' component={HomePage} />
                 <Route exact path='/shop' component={ShopPage} />
