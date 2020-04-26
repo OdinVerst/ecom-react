@@ -1,11 +1,17 @@
-import React from 'react'
-import Login from '../../components/auth/login/Login'
+import React from 'react';
+import Login from '../../components/auth/login/Login';
+import Registr from '../../components/auth/registr/Registr';
+
+import './Singin.scss';
 
 const Singin = () => {
     return (
-        <div>
+        <div className="login-page">
             <h1>Singin</h1>
-            <Login />
+            <div className="login-page__wrapper">
+                <Login />
+                <Registr />
+            </div>
         </div>
     );
 };
