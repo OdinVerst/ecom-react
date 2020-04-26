@@ -41,8 +41,10 @@ class Login extends Component {
                 <form onSubmit={this.submitHandler}>
                     <FormInput label='Email' changeHandler={this.inputChangeHandler} type="email" name="email" value={email} required />
                     <FormInput label='Password' changeHandler={this.inputChangeHandler} type="password" name="password" value={password} required />
-                    <ButtonCustom type="submit">Log In</ButtonCustom>
-                    <ButtonCustom onClick={signInWithGoogle}>Log In with Google</ButtonCustom>
+                    <div className='button-group'>
+                        <ButtonCustom type='submit'>Log In</ButtonCustom>
+                        <ButtonCustom type='button' classStyle={'google'} onClick={signInWithGoogle}>Log In with Google</ButtonCustom>
+                    </div>
                 </form>
             </div>
         )

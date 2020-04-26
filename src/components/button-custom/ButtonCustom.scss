@@ -13,11 +13,29 @@
     font-weight: bolder;
     border: none;
     cursor: pointer;
+
+    &.google {
+      background-color: #4285f4;
+      color: white;
+    }
   
     &:hover {
       background-color: white;
       color: black;
       border: 1px solid black;
+
+      &.google {
+        background-color: #357ae8;
+        border: none;
+        color: white;
+      }
     }
+
   }
   
+
+  .button-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
