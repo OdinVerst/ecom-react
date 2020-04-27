@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import FormInput from '../../form-input/FormInput';
 
 import ButtonCustom from '../../button-custom/ButtonCustom';
-import { signInWithGoogle } from '../../../firebase/firebase.utils';
+import { auth, signInWithGoogle } from '../../../firebase/firebase.utils';
 
 import './Login.scss';
+import { Alert } from '../../alert/Alert';
 
 class Login extends Component {
     constructor(props) {
@@ -12,8 +13,17 @@ class Login extends Component {
 
         this.state = {
             email: '',
-            password: ''
+            password: '',
+            error: null
         }
+    }
+
+    clearAlert(duration) {
+        setTimeout(()=> {
+            this.setState({
+                error: null
+            });
+        }, duration);
     }
 
     inputChangeHandler = (evt) => {
@@ -22,17 +32,29 @@ class Login extends Component {
         this.setState({[name]: value});
     }
 
-    submitHandler = (evt) => {
+    submitHandler = async (evt) => {
         evt.preventDefault();
 
-        this.setState({
-            email: '',
-            password: ''
-        })
+        const { email, password } = this.state;
+
+        try {
+            await auth.signInWithEmailAndPassword(email,password);
+            this.setState({
+                email: '',
+                password: ''
+            })
+        } catch (error) {
+           this.setState({
+                error: {
+                    text: error.message,
+                    style: 'error'
+                }
+            }, this.clearAlert(2000));
+        }
     }
 
     render() {
-        const { email, password } = this.state;
+        const { email, password, error } = this.state;
 
         return (
             <div className='sign-in'>
@@ -41,6 +63,7 @@ class Login extends Component {
                 <form onSubmit={this.submitHandler}>
                     <FormInput label='Email' changeHandler={this.inputChangeHandler} type="email" name="email" value={email} required />
                     <FormInput label='Password' changeHandler={this.inputChangeHandler} type="password" name="password" value={password} required />
+                    {error ? <Alert {...error} /> : null}
                     <div className='button-group'>
                         <ButtonCustom type='submit'>Log In</ButtonCustom>
                         <ButtonCustom type='button' classStyle={'google'} onClick={signInWithGoogle}>Log In with Google</ButtonCustom>
