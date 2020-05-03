@@ -1,12 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
 import { Provider } from 'react-redux';
-import rootReduser from './redux/rootRedusr';
-import { createStore, applyMiddleware } from 'redux';
 
-const store = createStore(rootReduser, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+import App from './App';
+import { store } from './redux/store';
+import './index.css';
 
 ReactDOM.render(
   <React.StrictMode>
