@@ -43,7 +43,7 @@ class App extends Component {
     render() {
         return (
         <Router>
-            <Header login={this.state.user} />
+            <Header />
             <Switch>
                 <Route exact path='/' component={HomePage} />
                 <Route exact path='/shop' component={ShopPage} />

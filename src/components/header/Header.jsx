@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { auth } from '../../firebase/firebase.utils';
+import { connect } from 'react-redux';
 
-import './Header.scss';
+import { auth } from '../../firebase/firebase.utils';
 import { ReactComponent as Logo } from './logo.svg';
+import './Header.scss';
 
 const Header = ({login}) => {
     return (
@@ -25,4 +26,8 @@ const Header = ({login}) => {
     )
 }
 
-export default Header;
+const mapStateToProps = state => ({
+    login: state.user.user
+});
+
+export default connect(mapStateToProps)(Header);
