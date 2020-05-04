@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { auth } from '../../firebase/firebase.utils';
-import { CardIcon } from '../cart-icon/CardIcon';
+import { CartIcon } from '../cart-icon/CartIcon';
 
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './Header.scss';
+import { CartDropdown } from '../cart-dropdown/CartDropdown';
 
 const Header = ({login}) => {
     return (
@@ -23,8 +24,9 @@ const Header = ({login}) => {
                 }
                 <Link className="option" to="/shop">Shop</Link>
                 <Link className="option" to="/shop">Contacts</Link>
-                <CardIcon />
+                <CartIcon />
             </div>
+            <CartDropdown />
         </div>
     )
 }

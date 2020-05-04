@@ -1,9 +1,9 @@
 import React from 'react';
 
-import './CardIcon.scss';
+import './CartIcon.scss';
 import {  ReactComponent as CardSVGIcon } from '../../assets/card-icon.svg';
 
-export const CardIcon = () => {
+export const CartIcon = () => {
     return (
         <div className="cart-icon">
             <CardSVGIcon className="shopping-icon" />
