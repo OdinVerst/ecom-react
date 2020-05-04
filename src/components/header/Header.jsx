@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { auth } from '../../firebase/firebase.utils';
-import { ReactComponent as Logo } from './logo.svg';
+import { CardIcon } from '../cart-icon/CardIcon';
+
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './Header.scss';
 
 const Header = ({login}) => {
@@ -21,6 +23,7 @@ const Header = ({login}) => {
                 }
                 <Link className="option" to="/shop">Shop</Link>
                 <Link className="option" to="/shop">Contacts</Link>
+                <CardIcon />
             </div>
         </div>
     )
