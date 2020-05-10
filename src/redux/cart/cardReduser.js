@@ -1,7 +1,8 @@
-import { TOOGLE_SHOW_CART } from "../types";
+import { TOOGLE_SHOW_CART, ADD_TO_CART } from "../types";
 
 const initialState = {
-    hidden: true
+    hidden: true,
+    card: []
 };
 
 const cartReduser = (state = initialState, actions) => {
@@ -11,6 +12,11 @@ const cartReduser = (state = initialState, actions) => {
                 ...state,
                 hidden: !state.hidden
             };
+        case ADD_TO_CART:
+            return {
+                ...state,
+                card: [...state.card, actions.payload]
+            }
         default:
             return state;
     }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './CollectionPreview.scss';
-import { CollectionItem } from '../collection-item/CollectionItem';
+import CollectionItem from '../collection-item/CollectionItem';
 
 const CollectionPreview = ({ title, items }) => {
     return (
