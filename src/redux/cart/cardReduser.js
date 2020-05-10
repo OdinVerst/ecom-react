@@ -1,4 +1,5 @@
 import { TOOGLE_SHOW_CART, ADD_TO_CART } from "../types";
+import { addToCartHandler } from "./utils";
 
 const initialState = {
     hidden: true,
@@ -15,7 +16,7 @@ const cartReduser = (state = initialState, actions) => {
         case ADD_TO_CART:
             return {
                 ...state,
-                card: [...state.card, actions.payload]
+                card: addToCartHandler(state.card, actions.payload)
             }
         default:
             return state;
