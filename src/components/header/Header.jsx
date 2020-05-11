@@ -7,7 +7,7 @@ import CartIcon from '../cart-icon/CartIcon';
 
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './Header.scss';
-import { CartDropdown } from '../cart-dropdown/CartDropdown';
+import CartDropdown from '../cart-dropdown/CartDropdown';
 
 const Header = ({ login, hidden }) => {
     return (
