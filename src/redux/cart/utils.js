@@ -1,5 +1,4 @@
 export const addToCartHandler = (previousItems, currentItem) => {
-    console.log(currentItem.id)
     let isExist = false;
     const items =  previousItems.map(item => {
         if(item.id === currentItem.id) {
