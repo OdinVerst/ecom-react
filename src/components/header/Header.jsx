@@ -8,6 +8,8 @@ import CartIcon from '../cart-icon/CartIcon';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import './Header.scss';
 import CartDropdown from '../cart-dropdown/CartDropdown';
+import { currentUderSelector } from '../../redux/user/userSelector';
+import { cartHiddenSelector } from '../../redux/cart/cartSelector';
 
 const Header = ({ login, hidden }) => {
     return (
@@ -32,8 +34,8 @@ const Header = ({ login, hidden }) => {
 }
 
 const mapStateToProps = state => ({
-    login: state.user.user,
-    hidden: state.cart.hidden
+    login: currentUderSelector(state),
+    hidden: cartHiddenSelector(state)
 });
 
 

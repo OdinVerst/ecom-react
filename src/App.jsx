@@ -9,6 +9,7 @@ import { HomePage } from './pages/homepage/Homepage';
 import ShopPage from './pages/shop/Shoppage';
 import Header from './components/header/Header';
 import Singin from './pages/singin/Singin';
+import { currentUderSelector } from './redux/user/userSelector';
 
 class App extends Component {
     unsubscribeFromAuth = null;
@@ -53,7 +54,7 @@ const mapDispatchToProps = {
 }
 
 const mapStateToProps = (state) => ({
-    user: state.user.user
+    user: currentUderSelector(state)
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);

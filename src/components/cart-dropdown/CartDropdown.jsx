@@ -9,9 +9,11 @@ import { cartItemsSelector } from '../../redux/cart/cartSelector';
 const CartDropdown = ({cartItems}) => {
     return (
         <div className="cart-dropdown">
-            {
-                cartItems && cartItems.map(item => <CartItem key={item.id} item={item} />)
-            }
+            <div className="cart-dropdown__wrap-list">
+                {
+                    cartItems && cartItems.map(item => <CartItem key={item.id} item={item} />)
+                }
+            </div>
             <ButtonCustom>Go to checkout</ButtonCustom>
         </div>
     )
