@@ -10,6 +10,7 @@ import ShopPage from './pages/shop/Shoppage';
 import Header from './components/header/Header';
 import Singin from './pages/singin/Singin';
 import { currentUderSelector } from './redux/user/userSelector';
+import Checkout from './pages/checkout/Checkout';
 
 class App extends Component {
     unsubscribeFromAuth = null;
@@ -41,7 +42,8 @@ class App extends Component {
             <Header />
             <Switch>
                 <Route exact path='/' component={HomePage} />
-                <Route exact path='/shop' component={ShopPage} />
+                <Route path='/shop' component={ShopPage} />
+                <Route exact path='/checkout' component={Checkout} />
                 <Route exact path='/singin' render={() => this.props.user ? (<Redirect to="/" />) : (<Singin />)} />
             </Switch>
         </Router>
