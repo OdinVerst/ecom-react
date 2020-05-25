@@ -1,5 +1,5 @@
-import { TOOGLE_SHOW_CART, ADD_TO_CART } from "../types";
-import { addToCartHandler } from "./utils";
+import { TOOGLE_SHOW_CART, ADD_TO_CART, REMOVE_TO_CARD, CLEAR_ITEM_TO_CARD } from '../types';
+import { addToCartHandler, removeToCartHandler } from './utils';
 
 const initialState = {
     hidden: true,
@@ -17,6 +17,16 @@ const cartReduser = (state = initialState, actions) => {
             return {
                 ...state,
                 cart: addToCartHandler(state.cart, actions.payload)
+            }
+        case REMOVE_TO_CARD:
+            return {
+                ...state,
+                cart: removeToCartHandler(state.cart, actions.payload)
+            }
+        case CLEAR_ITEM_TO_CARD:
+            return {
+                ...state,
+                cart: state.cart.filter(cartItem => cartItem.id !== actions.payload.id)
             }
         default:
             return state;
