@@ -6,7 +6,7 @@ const initialState = {
     cart: []
 };
 
-const cartReduser = (state = initialState, actions) => {
+const cartReducer = (state = initialState, actions) => {
     switch (actions.type) {
         case TOOGLE_SHOW_CART:
             return {
@@ -33,4 +33,4 @@ const cartReduser = (state = initialState, actions) => {
     }
 };
 
-export default cartReduser;
+export default cartReducer;
