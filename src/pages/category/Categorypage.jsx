@@ -1,12 +1,18 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { categoryShopSelector } from '../../redux/shop/shopSelector';
 
-const Categorypage = ({ match }) => {
-    console.log(match.params.categoryID);
+const Categorypage = ({ collictions }) => {
+    console.log(collictions);
     return (
         <div className="">
-            <h1>Categorypage {match.params.categoryID}</h1>
+            <h1>Categorypage</h1>
         </div>
     )
 };
 
-export default Categorypage;
+const mapStateToProps = (state, ownProps) => ({
+    collictions: categoryShopSelector(ownProps.match.params.categoryID)(state)
+})
+
+export default connect(mapStateToProps)(Categorypage);
