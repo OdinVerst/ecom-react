@@ -5,21 +5,18 @@ const initialState = {
             imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
             id: 1,
             linkUrl: 'shop/hats',
-            addressUrl: 'hats' 
         },
         {
             title: 'jackets',
             imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
             id: 2,
             linkUrl: 'shop/jackets',
-            addressUrl: ''
         },
         {
             title: 'sneakers',
             imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
             id: 3,
             linkUrl: 'shop/sneakers',
-            addressUrl: ''
         },
         {
             title: 'womens',
@@ -27,7 +24,6 @@ const initialState = {
             size: 'large',
             id: 4,
             linkUrl: 'shop/womens',
-            addressUrl: ''
         },
         {
             title: 'mens',
@@ -35,7 +31,6 @@ const initialState = {
             size: 'large',
             id: 5,
             linkUrl: 'shop/mens',
-            addressUrl: ''
         }
     ]
 };
