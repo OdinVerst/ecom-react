@@ -1,42 +1,60 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { connect } from 'react-redux';
+import React from "react";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-import { auth } from '../../firebase/firebase.utils';
-import CartIcon from '../cart-icon/CartIcon';
+import { auth } from "../../firebase/firebase.utils";
+import CartIcon from "../cart-icon/CartIcon";
+import CartDropdown from "../cart-dropdown/CartDropdown";
 
-import { ReactComponent as Logo } from '../../assets/logo.svg';
-import './Header.scss';
-import CartDropdown from '../cart-dropdown/CartDropdown';
-import { currentUderSelector } from '../../redux/user/userSelector';
-import { cartHiddenSelector } from '../../redux/cart/cartSelector';
+import {
+  HeaderContainer,
+  LogoContainer,
+  Logo,
+  OptionsContainer,
+  OptionDiv,
+  OptionLink,
+  ButtonSingOut,
+} from "./Header.styles";
+
+import { currentUderSelector } from "../../redux/user/userSelector";
+import { cartHiddenSelector } from "../../redux/cart/cartSelector";
 
 const Header = ({ login, hidden }) => {
-    return (
-        <div className="header">
-            <div className="logo-container">
-                <Link to='/'>
-                    <Logo className="logo" />
-                </Link>
-            </div>
-            <div className="options">
-                {login ? 
-                    <span className="option">{login.email} <button onClick={()=> { auth.signOut(); }} className="reset-btn singout-btn">Sing Out</button></span> : 
-                    <Link className="option" to="/singin">Sing In</Link>
-                }
-                <Link className="option" to="/shop">Shop</Link>
-                <Link className="option" to="/shop">Contacts</Link>
-                <CartIcon />
-            </div>
-            {hidden ? null : <CartDropdown />}
-        </div>
-    )
-}
+  return (
+    <HeaderContainer>
+      <LogoContainer>
+        <Link to="/">
+          <Logo />
+        </Link>
+      </LogoContainer>
+      <OptionsContainer>
+        {login ? (
+          <OptionDiv>
+            {login.email}
+            <ButtonSingOut
+              onClick={() => {
+                auth.signOut();
+              }}
+              className="reset-btn"
+            >
+              Sing Out
+            </ButtonSingOut>
+          </OptionDiv>
+        ) : (
+          <OptionLink to="/singin">Sing In</OptionLink>
+        )}
+        <OptionLink to="/shop">Shop</OptionLink>
+        <OptionLink to="/shop">Contacts</OptionLink>
+        <CartIcon />
+      </OptionsContainer>
+      {hidden ? null : <CartDropdown />}
+    </HeaderContainer>
+  );
+};
 
-const mapStateToProps = state => ({
-    login: currentUderSelector(state),
-    hidden: cartHiddenSelector(state)
+const mapStateToProps = (state) => ({
+  login: currentUderSelector(state),
+  hidden: cartHiddenSelector(state),
 });
-
 
 export default connect(mapStateToProps, null)(Header);
