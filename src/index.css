@@ -20,3 +20,9 @@ body {
     border-radius: 0;
     cursor: pointer;
 }
+
+.button-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

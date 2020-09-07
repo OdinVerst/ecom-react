@@ -66,7 +66,7 @@ class Login extends Component {
                     {error ? <Alert {...error} /> : null}
                     <div className='button-group'>
                         <ButtonCustom type='submit'>Log In</ButtonCustom>
-                        <ButtonCustom type='button' classStyle={'google'} onClick={signInWithGoogle}>Log In with Google</ButtonCustom>
+                        <ButtonCustom type='button' isGoogle onClick={signInWithGoogle}>Log In with Google</ButtonCustom>
                     </div>
                 </form>
             </div>
