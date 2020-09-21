@@ -1,48 +1,48 @@
-import React from 'react';
-import { connect } from 'react-redux';
+import React from "react";
+import { connect } from "react-redux";
 
-import { cartItemsSelector, cartTotalSelector } from '../../redux/cart/cartSelector';
-import './Checkout.scss';
-import CheckoutItem from '../../components/checkout-item/CheckoutItem';
-import { StripeButton } from '../../components/stripe-button/StripeButton';
+import {
+  cartItemsSelector,
+  cartTotalSelector,
+} from "../../redux/cart/cartSelector";
+import { StripeButton } from "../../components/stripe-button/StripeButton";
+import CheckoutItem from "../../components/checkout-item/CheckoutItem";
 
-const Checkout = ({cartItems, total}) => {
-    return (
-        <div className='checkout-page'>
-            <div className='checkout-header'>
-            <div className='header-block'>
-                <span>Product</span>
-            </div>
-            <div className='header-block'>
-                <span>Description</span>
-            </div>
-            <div className='header-block'>
-                <span>Quantity</span>
-            </div>
-            <div className='header-block'>
-                <span>Price</span>
-            </div>
-            <div className='header-block'>
-                <span>Remove</span>
-            </div>
-            </div>
-            {cartItems.map(cartItem => (
-                <CheckoutItem key={cartItem.id} cartItem={cartItem} />
-            ))}
-            <div className='total'>TOTAL: ${total}</div>
-            <div className='test-warning'>
-                *Please use the following test credit card for payments*
-                <br />
-                4242 4242 4242 4242 - Exp: 02/22 - CVV: 123
-            </div>
-            <StripeButton price={total} />
-        </div>
-    )
+import {
+  CheckoutWrapper,
+  CheckoutHeaderWrapper,
+  CheckoutHeaderBlockWrapper,
+  CheckoutTotalWrapper,
+  CheckoutWarmingWrapper,
+} from "./Checkout.styles";
+
+const Checkout = ({ cartItems, total }) => {
+  return (
+    <CheckoutWrapper>
+      <CheckoutHeaderWrapper>
+        <CheckoutHeaderBlockWrapper>Product</CheckoutHeaderBlockWrapper>
+        <CheckoutHeaderBlockWrapper>Description</CheckoutHeaderBlockWrapper>
+        <CheckoutHeaderBlockWrapper>Quantity</CheckoutHeaderBlockWrapper>
+        <CheckoutHeaderBlockWrapper>Price</CheckoutHeaderBlockWrapper>
+        <CheckoutHeaderBlockWrapper>Remove</CheckoutHeaderBlockWrapper>
+      </CheckoutHeaderWrapper>
+      {cartItems.map((cartItem) => (
+        <CheckoutItem key={cartItem.id} cartItem={cartItem} />
+      ))}
+      <CheckoutTotalWrapper>TOTAL: ${total}</CheckoutTotalWrapper>
+      <CheckoutWarmingWrapper>
+        *Please use the following test credit card for payments*
+        <br />
+        4242 4242 4242 4242 - Exp: 02/22 - CVV: 123
+      </CheckoutWarmingWrapper>
+      <StripeButton price={total} />
+    </CheckoutWrapper>
+  );
 };
 
-const mapStatetoProps = state => ({
-    cartItems: cartItemsSelector(state),
-    total: cartTotalSelector(state)
-})
+const mapStatetoProps = (state) => ({
+  cartItems: cartItemsSelector(state),
+  total: cartTotalSelector(state),
+});
 
 export default connect(mapStatetoProps)(Checkout);

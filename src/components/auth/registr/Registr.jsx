@@ -5,8 +5,6 @@ import { auth, createUserDocument } from '../../../firebase/firebase.utils';
 import ButtonCustom from '../../button-custom/ButtonCustom';
 import { Alert } from '../../alert/Alert';
 
-import './Registr.scss';
-
 class Registr extends Component {
     constructor(props) {
         super(props);
