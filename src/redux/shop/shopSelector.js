@@ -1,19 +1,19 @@
 import { createSelector } from 'reselect';
 
-
 const shopItems = state => state.shop;
 
 export const shopSelector = createSelector(
     [shopItems],
-    shop => Object.keys(shop).map(key => shop[key])
+    (shop) => shop.collections
 );
 
 export const selectCollectionsForPreview = createSelector(
-    [shopItems],
-    collections => collections ? Object.keys(collections).map((key) => collections[key]) : []
+    [shopSelector],
+    (collections) =>
+    collections ? Object.keys(collections).map((key) => collections[key]) : []
 );
 
-export const categoryShopSelector = ownProps => createSelector(
-    [shopItems],
-    collections => collections[ownProps]
-);
+export const selectCollection = (collectionUrlParam) =>
+  createSelector([shopItems], (collections) =>
+    collections ? collections[collectionUrlParam] : null
+  );

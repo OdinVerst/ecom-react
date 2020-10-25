@@ -50,7 +50,10 @@ export const convertCollectionsSnapshotToMap = (collections) => {
         }
     });
 
-    console.log(transformedCollections);
+    return transformedCollections.reduce((accumulator, currentValue) => {
+        accumulator[currentValue.title] = currentValue;
+        return accumulator;
+    }, {});
 }
 
 const provider = new firebase.auth.GoogleAuthProvider();

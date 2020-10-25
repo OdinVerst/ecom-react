@@ -5,14 +5,18 @@ import CollectionsOverview from '../../components/collections-overview/Collectio
 import Categorypage from '../category/Categorypage';
 
 import { convertCollectionsSnapshotToMap, firestore } from '../../firebase/firebase.utils'
+import { connect } from 'react-redux';
+import { upadteCollections } from '../../redux/shop/shopActions';
 
 class ShopPage extends React.Component {
   unsubscribeFromCollection = null;
 
   componentDidMount() {
+    const { upadteCollections } = this.props;
     const collectionRef = firestore.collection('collection');
     collectionRef.onSnapshot(async snapshot => {
-      convertCollectionsSnapshotToMap(snapshot);
+      const collections = convertCollectionsSnapshotToMap(snapshot);
+      upadteCollections(collections);
     });
   }
 
@@ -27,4 +31,8 @@ class ShopPage extends React.Component {
   }
 }
 
-export default ShopPage;
+const mapToDiaspatchProps = (dispatch) => ({
+  upadteCollections: (collectionsMap) => dispatch(upadteCollections(collectionsMap))
+});
+
+export default connect(null, mapToDiaspatchProps)(ShopPage);

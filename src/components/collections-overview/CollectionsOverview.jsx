@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import CollectionPreview from '../collections-preview/CollectionPreview';
-import { shopSelector } from '../../redux/shop/shopSelector';
+import { selectCollectionsForPreview } from '../../redux/shop/shopSelector';
 import './CollectionsOverview.scss';
 
 const CollectionsOverview = ({ collections }) => {
@@ -12,7 +12,7 @@ const CollectionsOverview = ({ collections }) => {
 };
 
 const mapStateToProps = state => ({
-    collections: shopSelector(state)
+    collections: selectCollectionsForPreview(state)
 });
 
 export default connect(mapStateToProps)(CollectionsOverview);

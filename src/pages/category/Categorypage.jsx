@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 
-import { categoryShopSelector } from "../../redux/shop/shopSelector";
+import { selectCollection } from "../../redux/shop/shopSelector";
 import CollectionItem from "../../components/collection-item/CollectionItem";
 import {
   CollectionItemsWrapper,
@@ -9,8 +9,8 @@ import {
   CollectionTitleWrapper,
 } from "./Ctegorypage.styles";
 
-const Categorypage = ({ collictions }) => {
-  const { title, items } = collictions;
+const Categorypage = ({ collections }) => {
+  const { title, items } = collections;
   return (
     <CollectionPageWrapper>
       <CollectionTitleWrapper>{title}</CollectionTitleWrapper>
@@ -24,7 +24,7 @@ const Categorypage = ({ collictions }) => {
 };
 
 const mapStateToProps = (state, ownProps) => ({
-  collictions: categoryShopSelector(ownProps.match.params.categoryID)(state),
+  collections: selectCollection(ownProps.match.params.categoryID)(state),
 });
 
 export default connect(mapStateToProps)(Categorypage);
