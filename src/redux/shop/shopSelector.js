@@ -9,7 +9,7 @@ export const shopSelector = createSelector(
 );
 
 export const selectCollectionsForPreview = createSelector(
-    [shopSelector],
+    [shopItems],
     collections => collections ? Object.keys(collections).map((key) => collections[key]) : []
 );
 
