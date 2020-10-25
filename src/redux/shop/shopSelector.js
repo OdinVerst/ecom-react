@@ -8,6 +8,11 @@ export const shopSelector = createSelector(
     shop => Object.keys(shop).map(key => shop[key])
 );
 
+export const selectCollectionsForPreview = createSelector(
+    [shopSelector],
+    collections => collections ? Object.keys(collections).map((key) => collections[key]) : []
+);
+
 export const categoryShopSelector = ownProps => createSelector(
     [shopItems],
     collections => collections[ownProps]
