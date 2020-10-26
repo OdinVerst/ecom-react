@@ -14,6 +14,5 @@ export const selectCollectionsForPreview = createSelector(
 );
 
 export const selectCollection = (collectionUrlParam) =>
-  createSelector([shopItems], (collections) =>
-    collections ? collections[collectionUrlParam] : null
-  );
+  createSelector([shopSelector], (collections) => collections ? collections[collectionUrlParam] : null
+);

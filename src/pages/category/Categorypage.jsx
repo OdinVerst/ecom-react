@@ -10,6 +10,7 @@ import {
 } from "./Ctegorypage.styles";
 
 const Categorypage = ({ collections }) => {
+  console.log(collections);
   const { title, items } = collections;
   return (
     <CollectionPageWrapper>
@@ -23,8 +24,11 @@ const Categorypage = ({ collections }) => {
   );
 };
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = (state, ownProps) => {
+  console.log(ownProps.match.params.categoryID);
+  return {
   collections: selectCollection(ownProps.match.params.categoryID)(state),
-});
+}
+};
 
 export default connect(mapStateToProps)(Categorypage);
