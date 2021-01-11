@@ -6,7 +6,7 @@ import Categorypage from '../category/Categorypage';
 
 import { connect } from 'react-redux';
 import Spiner from '../../components/spiner/Spiner';
-import {isFetchingCollections} from "../../redux/shop/shopSelector";
+import {isFetchingCollections, isLoadingCollections} from "../../redux/shop/shopSelector";
 import {startFetchingCollectionsAsync} from "../../redux/shop/shopActions";
 
 const CollectionsOverviewWithSpiner = Spiner(CollectionsOverview);
@@ -20,18 +20,19 @@ class ShopPage extends React.Component {
   }
 
   render () {
-    const { match, isLoading } = this.props;
+    const { match, isLoading, isFetching } = this.props;
     return (
       <div className="shop-page">
-          <Route exact path={match.path} render={props => <CollectionsOverviewWithSpiner isLoading={isLoading} {...props}  />} />
-          <Route path={`${match.path}/:categoryID`} render={props => <CategorypageWithSpiner isLoading={isLoading} {...props}  />} />
+          <Route exact path={match.path} render={props => <CollectionsOverviewWithSpiner isLoading={isFetching} {...props}  />} />
+          <Route path={`${match.path}/:categoryID`} render={props => <CategorypageWithSpiner isLoading={!isLoading} {...props}  />} />
       </div>
     )
   }
 }
 
 const mapStateToProps = (state) => ({
-    isLoading: isFetchingCollections(state)
+    isLoading: isLoadingCollections(state),
+    isFetching: isFetchingCollections(state),
 });
 
 const mapToDiaspatchProps = (dispatch) => ({
