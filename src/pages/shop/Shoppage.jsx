@@ -2,13 +2,13 @@ import React from 'react';
 import {Route} from 'react-router-dom';
 import {connect} from 'react-redux';
 
-import {startFetchingCollectionsAsync} from "../../redux/shop/shopActions";
+import {startFetchingCollections} from "../../redux/shop/shopActions";
 import CollectionsOverviewContainer from "../../components/collections-overview/CollectionsOverviewContainer";
 import CategoryContainer from "../category/CategoryContainer";
 
 class ShopPage extends React.Component {
     componentDidMount() {
-        startFetchingCollectionsAsync()
+        startFetchingCollections()
     }
 
     render() {
@@ -23,7 +23,7 @@ class ShopPage extends React.Component {
 }
 
 const mapToDiaspatchProps = (dispatch) => ({
-    startFetchingCollectionsAsync: dispatch(startFetchingCollectionsAsync())
+    startFetchingCollections: dispatch(startFetchingCollections())
 });
 
 export default connect(null, mapToDiaspatchProps)(ShopPage);
