@@ -1,4 +1,4 @@
-import { TOOGLE_SHOW_CART, ADD_TO_CART, REMOVE_TO_CARD, CLEAR_ITEM_TO_CARD } from '../types';
+import {TOOGLE_SHOW_CART, ADD_TO_CART, REMOVE_TO_CARD, CLEAR_ITEM_TO_CARD, CLEAR_ALL_CARD} from '../types';
 
 export const setToggleShowCart = () =>  ({
     type: TOOGLE_SHOW_CART
@@ -17,4 +17,8 @@ export const removeToCart = payload => ({
 export const clearItemToCart = payload => ({
     type: CLEAR_ITEM_TO_CARD,
     payload
+});
+
+export const clearCart = () =>  ({
+    type: CLEAR_ALL_CARD
 });
