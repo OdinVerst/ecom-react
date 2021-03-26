@@ -1,11 +1,14 @@
 import React, { Component } from 'react'
-import FormInput from '../../form-input/FormInput';
+import {connect} from "react-redux";
 
+import FormInput from '../../form-input/FormInput';
 import ButtonCustom from '../../button-custom/ButtonCustom';
-import { auth, signInWithGoogle } from '../../../firebase/firebase.utils';
+import { Alert } from '../../alert/Alert';
+
+import {emailSingInStart, googleSingInStart} from "../../../redux/user/userActions";
 
 import './Login.scss';
-import { Alert } from '../../alert/Alert';
+
 
 class Login extends Component {
     constructor(props) {
@@ -28,7 +31,6 @@ class Login extends Component {
 
     inputChangeHandler = (evt) => {
         const { name, value } = evt.target;
-
         this.setState({[name]: value});
     }
 
@@ -36,25 +38,13 @@ class Login extends Component {
         evt.preventDefault();
 
         const { email, password } = this.state;
-
-        try {
-            await auth.signInWithEmailAndPassword(email,password);
-            this.setState({
-                email: '',
-                password: ''
-            })
-        } catch (error) {
-           this.setState({
-                error: {
-                    text: error.message,
-                    style: 'error'
-                }
-            }, this.clearAlert(2000));
-        }
+        const { loginWithEmail } = this.props;
+        loginWithEmail({email, password})
     }
 
     render() {
         const { email, password, error } = this.state;
+        const { loginWithGoogle } = this.props;
 
         return (
             <div className='sign-in'>
@@ -66,7 +56,7 @@ class Login extends Component {
                     {error ? <Alert {...error} /> : null}
                     <div className='button-group'>
                         <ButtonCustom type='submit'>Log In</ButtonCustom>
-                        <ButtonCustom type='button' isGoogle onClick={signInWithGoogle}>Log In with Google</ButtonCustom>
+                        <ButtonCustom type='button' isGoogle onClick={loginWithGoogle}>Log In with Google</ButtonCustom>
                     </div>
                 </form>
             </div>
@@ -74,4 +64,10 @@ class Login extends Component {
     }
 }
 
-export default Login;
+const mapToDispatchProps = (dispatch) => ({
+    loginWithGoogle: () => dispatch(googleSingInStart()),
+    loginWithEmail: (props) => dispatch(emailSingInStart(props))
+});
+
+
+export default connect(null, mapToDispatchProps)(Login);
