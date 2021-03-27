@@ -4,7 +4,7 @@ import {
     SINGIN_FAILED,
     SINGIN_SUCCESS,
     SINGOUT_FAILED,
-    SINGOUT_SUCCESS
+    SINGOUT_SUCCESS, SINGUP_FAILED
 } from "../types";
 
 const initialState = {
@@ -28,6 +28,7 @@ const userReducer = (state = initialState, action) => {
                 user: action.payload
             }
         case SINGIN_FAILED:
+        case SINGUP_FAILED:
             return {
                 ...state,
                 loading: false,

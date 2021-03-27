@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import FormInput from '../../form-input/FormInput';
 
-import { auth, createUserDocument } from '../../../firebase/firebase.utils';
 import ButtonCustom from '../../button-custom/ButtonCustom';
 import { Alert } from '../../alert/Alert';
+import {connect} from "react-redux";
+import {singUpStart} from "../../../redux/user/userActions";
 
 class Registr extends Component {
     constructor(props) {
@@ -34,6 +35,7 @@ class Registr extends Component {
 
     submitHandler = async (evt) => {
         evt.preventDefault();
+        const { singIn } = this.props;
         const { displayName ,email, password, confirmPassword } = this.state;
         if(password !== confirmPassword) {
             this.setState({
@@ -45,29 +47,7 @@ class Registr extends Component {
             return;
         }
 
-        try {
-            const { user } = await auth.createUserWithEmailAndPassword(
-                email,
-                password
-            );
-
-            await createUserDocument(user, { displayName });
-
-            this.setState({
-                displayName: '',
-                email: '',
-                password: '',
-                confirmPassword: ''
-            })
-        } catch (error) {
-            this.setState({
-                error: {
-                    text: error.message,
-                    style: 'error'
-                }
-            }, this.clearAlert(2000));
-        }
-        
+        singIn({displayName ,email, password});
     }
 
     render() {
@@ -92,4 +72,8 @@ class Registr extends Component {
     }
 }
 
-export default Registr;
+const mapToDispatchProps = (dispatch) => ({
+    singIn: (props) => dispatch(singUpStart(props))
+})
+
+export default connect(null, mapToDispatchProps)(Registr);

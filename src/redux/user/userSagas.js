@@ -5,7 +5,7 @@ import {
     GOOGLE_SINGIN_START,
     SINGIN_FAILED,
     SINGIN_SUCCESS, SINGOUT_FAILED,
-    SINGOUT_START, SINGOUT_SUCCESS
+    SINGOUT_START, SINGOUT_SUCCESS, SINGUP_START
 } from "../types";
 import {auth, createUserDocument, getCurrentUser, googleProvider} from "../../firebase/firebase.utils";
 
@@ -57,6 +57,15 @@ function* singOut() {
     }
 }
 
+function* singUp({singUpValues: {email, password, displayName}}) {
+    try {
+        const { user } = yield auth.createUserWithEmailAndPassword(email, password);
+        yield getSnapShotUser({...user, displayName})
+    } catch (e) {
+        yield put({type: SINGIN_FAILED, payload: e.message})
+    }
+}
+
 function* onGoogleSingIn() {
     yield takeLatest(GOOGLE_SINGIN_START, googleSingInAsync)
 }
@@ -74,6 +83,10 @@ function* onSingOut() {
     yield takeLatest(SINGOUT_START, singOut)
 }
 
+function* onSingUp () {
+    yield takeLatest(SINGUP_START, singUp)
+}
+
 export function* userSagas() {
-    yield all([call(onGoogleSingIn), call(onEmailSingIn), call(onCheckUserSession), call(onSingOut)])
+    yield all([call(onGoogleSingIn), call(onEmailSingIn), call(onCheckUserSession), call(onSingOut), call(onSingUp)])
 }
