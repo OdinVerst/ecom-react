@@ -15,7 +15,7 @@ import {
     ButtonSingOut,
 } from "./Header.styles";
 
-import {currentUderSelector} from "../../redux/user/userSelector";
+import {currentUserSelector} from "../../redux/user/userSelector";
 import {cartHiddenSelector} from "../../redux/cart/cartSelector";
 import {singOutStart} from "../../redux/user/userActions";
 
@@ -53,12 +53,12 @@ const Header = ({login, hidden, singOut}) => {
 };
 
 const mapStateToProps = (state) => ({
-    login: currentUderSelector(state),
+    login: currentUserSelector(state),
     hidden: cartHiddenSelector(state),
 });
 
-const mapToDiaspatchProps = (dispatch) => ({
+const mapDispatchToProps = (dispatch) => ({
     singOut: () => dispatch(singOutStart())
 });
 
-export default connect(mapStateToProps, mapToDiaspatchProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

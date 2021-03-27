@@ -1,11 +1,7 @@
-import React from 'react';
-
 import './Alert.scss';
 
-export const Alert = ({text, style}) => {
-    return (
-        <div className={`${style} alert`}>
-            {text}
-        </div>
-    )
-}
+export const Alert = ({msg, style = 'error'}) => (
+    <div className={`${style} alert`}>
+        {msg}
+    </div>
+)

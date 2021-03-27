@@ -5,7 +5,7 @@ import {
     GOOGLE_SINGIN_START,
     SINGIN_FAILED,
     SINGIN_SUCCESS, SINGOUT_FAILED,
-    SINGOUT_START, SINGOUT_SUCCESS, SINGUP_START
+    SINGOUT_START, SINGOUT_SUCCESS, SINGUP_FAILED, SINGUP_START
 } from "../types";
 import {auth, createUserDocument, getCurrentUser, googleProvider} from "../../firebase/firebase.utils";
 
@@ -62,7 +62,7 @@ function* singUp({singUpValues: {email, password, displayName}}) {
         const { user } = yield auth.createUserWithEmailAndPassword(email, password);
         yield getSnapShotUser({...user, displayName})
     } catch (e) {
-        yield put({type: SINGIN_FAILED, payload: e.message})
+        yield put({type: SINGUP_FAILED, payload: e.message})
     }
 }
 

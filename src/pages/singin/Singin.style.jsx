@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SinginWrapper = styled.div`
+export const SingInWrapper = styled.div`
     display: flex;
     max-width: 1000px;
     justify-content: space-between;

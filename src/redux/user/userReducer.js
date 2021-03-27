@@ -10,7 +10,8 @@ import {
 const initialState = {
     user: null,
     loading: false,
-    error: null
+    errorSingIn: null,
+    errorSingUp: null
 }
 
 const userReducer = (state = initialState, action) => {
@@ -25,15 +26,23 @@ const userReducer = (state = initialState, action) => {
             return {
                 ...state,
                 loading: false,
-                user: action.payload
+                user: action.payload,
+                errorSingIn: null,
+                errorSingUp: null
             }
         case SINGIN_FAILED:
+            return {
+                ...state,
+                loading: false,
+                user: null,
+                errorSingIn: action.payload
+            }
         case SINGUP_FAILED:
             return {
                 ...state,
                 loading: false,
                 user: null,
-                error: action.payload
+                errorSingUp: action.payload
             }
         case SINGOUT_FAILED:
             return {

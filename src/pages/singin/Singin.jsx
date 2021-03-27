@@ -1,19 +1,15 @@
-import React from 'react';
 import Login from '../../components/auth/login/Login';
-import Registr from '../../components/auth/registr/Registr';
+import Registration from '../../components/auth/registration/Registration';
+import {SingInWrapper} from './Singin.style';
 
-import { SinginWrapper } from './Singin.style';
+const SingIn = () => (
+    <div className="login-page">
+        <h1>SingIn</h1>
+        <SingInWrapper>
+            <Login/>
+            <Registration/>
+        </SingInWrapper>
+    </div>
+);
 
-const Singin = () => {
-    return (
-        <div className="login-page">
-            <h1>Singin</h1>
-            <SinginWrapper>
-                <Login />
-                <Registr />
-            </SinginWrapper>
-        </div>
-    );
-};
-
-export default Singin;
+export default SingIn;
