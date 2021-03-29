@@ -7,7 +7,7 @@ import CollectionsOverviewContainer from "../../components/collections-overview/
 import CategoryContainer from "../category/CategoryContainer";
 
 const ShopPage = ({startFetchingCollections, match}) => {
-    useEffect(() => startFetchingCollections(),[]);
+    useEffect(() => startFetchingCollections(),[startFetchingCollections]);
 
     return (
         <div className="shop-page">
@@ -17,8 +17,8 @@ const ShopPage = ({startFetchingCollections, match}) => {
     )
 }
 
-const mapToDiaspatchProps = (dispatch) => ({
-    startFetchingCollections: dispatch(startFetchingCollections())
+const mapDispatchToProps = (dispatch) => ({
+    startFetchingCollections: () => dispatch(startFetchingCollections())
 });
 
-export default connect(null, mapToDiaspatchProps)(ShopPage);
+export default connect(null, mapDispatchToProps)(ShopPage);

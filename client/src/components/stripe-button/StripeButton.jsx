@@ -5,9 +5,22 @@ export const StripeButton = ({ price }) => {
     const apiKey = 'pk_test_51GqH07H9z1SOQ8QDHgtspWTTcGcgy5BY6wJsVFpRdluMou5khOLXE7RuJ57nQ26TPHokqwtCfZxUbZf5kWblMXYg00wnAfW9ST';
     const priceForStripe = price * 100;
 
-    const onToken = token => {
-        console.log(token);
-        alert('Payment Succesful!');
+    const onToken = async (token) => {
+        try {
+            const res = await fetch('/payments', {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({...token, amount: priceForStripe})
+            })
+            const data = await res.json();
+            if (!data.success) new Error('Not resp')
+            alert('Payment Succesful!');
+        } catch (e) {
+            console.log(e)
+            alert('Payment Fail!');
+        }
     };
 
     return (
