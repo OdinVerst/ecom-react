@@ -34,5 +34,5 @@ app.post('/payments', async (req, res) => {
 
 app.listen(PORT, (err) => {
     if (err) console.log(err)
-    console.log(`Example app listening at http://localhost:${PORT}`)
+    console.log(`Run app on port: ${PORT}`)
 });
