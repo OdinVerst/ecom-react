@@ -1,7 +1,7 @@
-import './Alert.scss';
+import {AlertContainerStyles} from "./Alert.styles";
 
 export const Alert = ({msg, style = 'error'}) => (
-    <div className={`${style} alert`}>
+    <AlertContainerStyles error={style === 'error'}>
         {msg}
-    </div>
+    </AlertContainerStyles>
 )

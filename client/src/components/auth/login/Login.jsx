@@ -7,7 +7,7 @@ import {Alert} from '../../alert/Alert';
 
 import {emailSingInStart, googleSingInStart} from "../../../redux/user/userActions";
 import {currentUserSingInErrorSelector} from "../../../redux/user/userSelector";
-import './Login.scss';
+import {LoginContainerStyles} from "./Login.styles";
 
 const Login = ({loginWithGoogle, loginWithEmail, errors}) => {
     const [user, setUser] = useState({email: '', password: ''});
@@ -31,7 +31,7 @@ const Login = ({loginWithGoogle, loginWithEmail, errors}) => {
     }
 
     return (
-        <div className='sign-in'>
+        <LoginContainerStyles>
             <h2>I already have an account</h2>
             <span>Sign in with your email and password</span>
             <form onSubmit={submitHandler}>
@@ -45,7 +45,7 @@ const Login = ({loginWithGoogle, loginWithEmail, errors}) => {
                     <ButtonCustom type='button' isGoogle onClick={loginWithGoogle}>Log In with Google</ButtonCustom>
                 </div>
             </form>
-        </div>
+        </LoginContainerStyles>
     )
 }
 

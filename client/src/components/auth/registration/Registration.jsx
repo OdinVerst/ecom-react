@@ -6,6 +6,7 @@ import ButtonCustom from '../../button-custom/ButtonCustom';
 import {Alert} from '../../alert/Alert';
 import {singUpStart} from "../../../redux/user/userActions";
 import {currentUserSingUpErrorSelector} from "../../../redux/user/userSelector";
+import {LoginContainerStyles} from "../login/Login.styles";
 
 const Registration = ({singIn, errors}) => {
     const [user, setUser] = useState({
@@ -36,7 +37,7 @@ const Registration = ({singIn, errors}) => {
     }
 
     return (
-        <div className='sign-in'>
+        <LoginContainerStyles>
             <h2>I do not have a account</h2>
             <span>Sign up with your email and password</span>
             <form onSubmit={submitHandler}>
@@ -53,7 +54,7 @@ const Registration = ({singIn, errors}) => {
                     <ButtonCustom type='submit'>Sing Up</ButtonCustom>
                 </div>
             </form>
-        </div>
+        </LoginContainerStyles>
     )
 }
 

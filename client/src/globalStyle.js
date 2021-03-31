@@ -1,15 +1,18 @@
-*,
-*::after,
-*::before {
-    box-sizing: border-box;
-}
+import {createGlobalStyle} from 'styled-components';
 
-body {
+const GlobalStyle = createGlobalStyle`
+  *,
+  *::after,
+  *::before {
+    box-sizing: border-box;
+  }
+
+  body {
     font-family: 'Open Sans Condensed', sans-serif;
     padding: 20px 80px;
-}
+  }
 
-.reset-btn {
+  .reset-btn {
     font-size: 1rem;
     font-family: 'Open Sans Condensed', sans-serif;
     padding: 0;
@@ -19,10 +22,13 @@ body {
     box-shadow: none;
     border-radius: 0;
     cursor: pointer;
-}
+  }
 
-.button-group {
+  .button-group {
     width: 100%;
     display: flex;
     justify-content: space-between;
-}
+  }
+`;
+
+export default GlobalStyle;

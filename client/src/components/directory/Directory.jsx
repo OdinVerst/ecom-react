@@ -1,20 +1,18 @@
 import React from 'react'
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
-import { directorSelector } from '../../redux/directory/directorySelector';
 import MenuItem from '../menu-item/MenuItem';
+import {directorSelector} from '../../redux/directory/directorySelector';
 
-import './Directory.scss';
+import {DirectoryStyle} from "./Directory.styles";
 
-const Directory = ({sections}) => {
-    return (
-        <div className="directory-menu">
-            {sections.map(({ id, ...otherProps}) => 
-                <MenuItem key={id} {...otherProps} />
-            )}
-        </div>
-    ); 
-};
+const Directory = ({sections}) => (
+    <DirectoryStyle>
+        {sections.map(({id, ...otherProps}) =>
+            <MenuItem key={id} {...otherProps} />
+        )}
+    </DirectoryStyle>
+);
 
 const mapStateToProps = state => ({
     sections: directorSelector(state)

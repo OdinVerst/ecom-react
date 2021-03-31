@@ -1,4 +1,6 @@
-.cart-dropdown {
+import styled from 'styled-components';
+
+export const CartDropdownStyle = styled.div`
   position: absolute;
   width: 240px;
   height: 340px;
@@ -11,27 +13,20 @@
   right: 40px;
   z-index: 5;
 
-  .cart-items {
-    height: 240px;
-    display: flex;
-    flex-direction: column;
-    overflow: scroll;
-  }
-
   button {
     margin-top: auto;
   }
-}
+`;
 
-.cart-dropdown__wrap-list {
+export const CartDropdownListStyle = styled.div`
   max-height: 258px;
   overflow: scroll;
-}
+`;
 
-.empty-message {
+export const EmptyMessageStyle = styled.span`
   font-size: 18px;
   margin: 50px auto;
   display: inline-block;
   text-align: center;
   width: 100%;
-}
+`;
