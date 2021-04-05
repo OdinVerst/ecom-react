@@ -8,6 +8,7 @@
     "npm": "7.6.0"
   },
   "scripts": {
+    "analyze": "cd client && npm run analyze",
     "client": "cd client && npm run start",
     "server": "nodemon server.js",
     "build": "cd client && npm run build",
