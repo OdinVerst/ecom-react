@@ -13,6 +13,6 @@ export const CollectionPreviewTitleStyle = styled.h2`
 
 export const CollectionPreviewStyle = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   grid-gap: 10px;
 `;
