@@ -34,7 +34,11 @@ app.post('/payments', async (req, res) => {
     } catch (e) {
         res.status(500).json({ error: e })
     }
-})
+});
+
+app.get('/service-worker.js', (req, res) => {
+    res.sendFile(path.join(__dirname, '..' ,'build' , 'service-worker.js'))
+});
 
 app.listen(PORT, (err) => {
     if (err) console.log(err)
