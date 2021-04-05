@@ -2,17 +2,19 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const stripe = require('stripe');
-const compression = require('compression')
+const compression = require('compression');
+const enforce = require('express-sslify');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const Stripe = stripe(process.env.STRIPE_SECRET_KEY);
 
-app.use(compression())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
 if (process.env.NODE_ENV === 'production') {
+    app.use(compression);
+    app.use(enforce.HTTPS({ trustProtoHeader: true }));
     app.use('/', express.static(path.join(__dirname, 'client/build')));
 
     app.get('*', (req, res) => {
