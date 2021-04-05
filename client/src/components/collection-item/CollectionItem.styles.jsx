@@ -30,7 +30,6 @@ export const CollectionItemImgStyles = styled.div`
 `;
 
 export const CollectionItemStyles = styled.div`
-  width: 22vw;
   display: flex;
   flex-direction: column;
   height: 350px;

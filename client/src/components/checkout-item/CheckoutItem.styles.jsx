@@ -13,6 +13,11 @@ export const CheckoutImgWrapStyle = styled.div`
 export const CheckoutBlockStyle = styled.div`
   width: 23%;
   display: flex;
+  justify-content: center;
+  
+  @media (max-width: 425px) {
+    font-size: 15px;
+  }
 `;
 
 export const CheckoutQuantityValueStyle = styled.span`

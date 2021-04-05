@@ -12,7 +12,7 @@ import {
     OptionsContainer,
     OptionDiv,
     OptionLink,
-    ButtonSingOut,
+    ButtonSingOut, HeaderUserEmail,
 } from "./Header.styles";
 
 import {currentUserSelector} from "../../redux/user/userSelector";
@@ -30,7 +30,7 @@ const Header = ({login, hidden, singOut}) => {
             <OptionsContainer>
                 {login ? (
                     <OptionDiv>
-                        {login.email}
+                        <HeaderUserEmail>{login.email}</HeaderUserEmail>
                         <ButtonSingOut
                             onClick={() => {
                                 singOut()

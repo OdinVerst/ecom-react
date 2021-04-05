@@ -21,7 +21,6 @@ export const MenuItemContentStyle = styled.div`
   background-color: white;
   opacity: 0.7;
   position: absolute;
-
 `;
 
 
@@ -54,7 +53,6 @@ export const MenuItemStyle = styled.a`
   ${props => props.large && css`
     height: 380px;
   `}
-  
   &:hover {
     ${MenuItemImgBGStyle} {
       transform: scale(1.1);
@@ -64,5 +62,13 @@ export const MenuItemStyle = styled.a`
     ${MenuItemContentStyle} {
       opacity: 0.9;
     }
+  }
+
+  @media (max-width: 625px) {
+    min-width: 250px;
+
+    ${props => props.large && css`
+      height: 240px;
+    `}
   }
 `;

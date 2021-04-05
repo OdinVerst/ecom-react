@@ -12,7 +12,7 @@ export const CollectionTitleWrapper = styled.h1`
 
 export const CollectionItemsWrapper = styled.div`
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
     grid-gap: 10px;
 
     & > * {

@@ -12,6 +12,7 @@ export const CollectionPreviewTitleStyle = styled.h2`
 `;
 
 export const CollectionPreviewStyle = styled.div`
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  grid-gap: 10px;
 `;

@@ -29,6 +29,19 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     justify-content: space-between;
   }
+  
+  @media (max-width: 1024px) {
+    body {
+      padding: 5px;
+    }
+  }
+
+  @media (max-width: 820px) {
+    .button-group {
+      justify-content: flex-start;
+      gap: 1em;
+    }
+  }
 `;
 
 export default GlobalStyle;
