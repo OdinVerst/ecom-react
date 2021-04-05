@@ -2,11 +2,13 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const path = require('path');
 const stripe = require('stripe');
+const compression = require('compression')
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 const Stripe = stripe(process.env.STRIPE_SECRET_KEY);
 
+app.use(compression())
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 
