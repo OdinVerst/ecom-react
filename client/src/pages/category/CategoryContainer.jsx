@@ -4,7 +4,7 @@ import {compose} from "redux";
 
 import {isLoadingCollections} from "../../redux/shop/shopSelector";
 
-import Spiner from "../../components/spiner/Spiner";
+import SpinnerWrapper from "../../components/spinner/SpinnerWrapper";
 import Categorypage from "./Categorypage";
 
 const mapStateToProps = createStructuredSelector({
@@ -13,7 +13,7 @@ const mapStateToProps = createStructuredSelector({
 
 const CategoryContainer = compose(
     connect(mapStateToProps),
-    Spiner
+    SpinnerWrapper
 )(Categorypage);
 
 export default CategoryContainer;

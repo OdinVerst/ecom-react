@@ -1,15 +1,18 @@
-import {useEffect} from 'react';
+import {lazy, useEffect, Suspense} from 'react';
 import {connect} from 'react-redux';
 import {BrowserRouter as Router, Switch, Route, Redirect} from 'react-router-dom';
 
 import {checkUserSession} from './redux/user/userActions';
 import {currentUserSelector} from './redux/user/userSelector';
 
-import {HomePage} from './pages/homepage/Homepage';
-import ShopPage from './pages/shop/Shoppage';
+
 import Header from './components/header/Header';
-import SingIn from './pages/singin/Singin';
-import Checkout from './pages/checkout/Checkout';
+import Spinner from "./components/spinner/Spinner";
+
+const HomePage = lazy(() => import('./pages/homepage/Homepage'));
+const ShopPage = lazy(() => import('./pages/shop/Shoppage'));
+const SingIn = lazy(() => import('./pages/singin/Singin'));
+const Checkout = lazy(() => import('./pages/checkout/Checkout'));
 
 const App = ({checkUserSession, user}) => {
     useEffect(() => checkUserSession, []);
@@ -18,10 +21,12 @@ const App = ({checkUserSession, user}) => {
         <Router>
             <Header/>
             <Switch>
-                <Route exact path='/' component={HomePage}/>
-                <Route path='/shop' component={ShopPage}/>
-                <Route exact path='/checkout' component={Checkout}/>
-                <Route exact path='/singin' render={() => user ? (<Redirect to="/"/>) : (<SingIn/>)}/>
+                <Suspense fallback={<Spinner />}>
+                    <Route exact path='/' component={HomePage}/>
+                    <Route path='/shop' component={ShopPage}/>
+                    <Route exact path='/checkout' component={Checkout}/>
+                    <Route exact path='/singin' render={() => user ? (<Redirect to="/"/>) : (<SingIn/>)}/>
+                </Suspense>
             </Switch>
         </Router>
     )
