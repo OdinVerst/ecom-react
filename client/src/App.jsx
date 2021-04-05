@@ -12,7 +12,7 @@ import SingIn from './pages/singin/Singin';
 import Checkout from './pages/checkout/Checkout';
 
 const App = ({checkUserSession, user}) => {
-    useEffect(() => checkUserSession, []);
+    useEffect(() => checkUserSession, [checkUserSession]);
 
     return (
         <Router>

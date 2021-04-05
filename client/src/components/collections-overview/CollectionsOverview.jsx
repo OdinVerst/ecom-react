@@ -1,14 +1,14 @@
 import React from 'react';
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 
 import CollectionPreview from '../collections-preview/CollectionPreview';
-import { selectCollectionsForPreview } from '../../redux/shop/shopSelector';
-import './CollectionsOverview.scss';
+import {selectCollectionsForPreview} from '../../redux/shop/shopSelector';
+import {CollectionsOverviewStyle} from "./CollectionsOverview.styles";
 
-const CollectionsOverview = ({ collections }) => {
-  return <div className="collections-overview">
-      {collections.map(({ id, ...otherCollectionsProps }) => <CollectionPreview key={id} {...otherCollectionsProps} />)}
-  </div>;
+const CollectionsOverview = ({collections}) => {
+    return <CollectionsOverviewStyle>
+        {collections.map(({id, ...otherCollectionsProps}) => <CollectionPreview key={id} {...otherCollectionsProps} />)}
+    </CollectionsOverviewStyle>;
 };
 
 const mapStateToProps = state => ({
