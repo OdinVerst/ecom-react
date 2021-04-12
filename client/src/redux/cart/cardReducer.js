@@ -1,4 +1,11 @@
-import {TOOGLE_SHOW_CART, ADD_TO_CART, REMOVE_TO_CARD, CLEAR_ITEM_TO_CARD, CLEAR_ALL_CARD} from '../types';
+import {
+    TOOGLE_SHOW_CART,
+    ADD_TO_CART,
+    REMOVE_TO_CARD,
+    CLEAR_ITEM_TO_CARD,
+    CLEAR_ALL_CARD,
+    SET_CART_FROM_FIREBASE
+} from '../types';
 import { addToCartHandler, removeToCartHandler } from './utils';
 
 const initialState = {
@@ -33,6 +40,11 @@ const cartReducer = (state = initialState, actions) => {
                 ...state,
                 cart: []
             }
+        case SET_CART_FROM_FIREBASE:
+            return {
+                ...state,
+                cart: actions.payload
+            };
         default:
             return state;
     }

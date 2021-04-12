@@ -11,6 +11,18 @@ firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
+export const getUserCartRef = async userId => {
+    const cartsRef = firestore.collection('carts').where('userId', '==', userId);
+    const snapShot = await cartsRef.get();
+
+    if (!snapShot.empty) return snapShot.docs[0].ref;
+
+    const cartDocRef = firestore.collection('carts').doc();
+    await cartDocRef.set({ userId, cartItems: [] });
+    return cartDocRef;
+
+};
+
 export const createUserDocument = async (user, additionalData) => {
     if (!user) return;
     
@@ -60,6 +72,7 @@ export const getCurrentUser = () => {
     return new Promise((resolve, reject) => {
         const unsubscribe = auth.onAuthStateChanged(userAuth => {
             unsubscribe();
+            getUserCartRef(userAuth.uid)
             resolve(userAuth)
         }, reject)
     })

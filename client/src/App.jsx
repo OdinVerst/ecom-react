@@ -16,7 +16,7 @@ const SingIn = lazy(() => import('./pages/singin/Singin'));
 const Checkout = lazy(() => import('./pages/checkout/Checkout'));
 
 const App = ({checkUserSession, user}) => {
-    useEffect(() => checkUserSession, []);
+    useEffect(() => checkUserSession(), []);
 
     return (
         <Router>
