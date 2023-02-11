@@ -27,7 +27,7 @@
   "homepage": "https://github.com/OdinVerst/ecom-react#readme",
   "devDependencies": {
     "concurrently": "^6.0.0",
-    "nodemon": "^2.0.7"
+    "nodemon": "^2.0.20"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
